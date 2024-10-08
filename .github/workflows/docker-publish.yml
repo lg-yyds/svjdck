@@ -18,6 +18,6 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build Docker image
-      run: docker build . -t lg-yyds/jdck:latest
+      run: docker build . -t yydsxll/jdck:latest
     - name: Push Docker image
-      run: docker push lg-yyds/jdck:latest
+      run: docker push yydsxll/jdck:latest
