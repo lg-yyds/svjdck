@@ -30,14 +30,14 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: dsmggm/autojdck
+          images: yydsxll/autojdck
 
       - name: Build and push Docker image
         id: push
@@ -47,8 +47,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            dsmggm/autojdck:latest          # 使用latest标签
-            dsmggm/autojdck:${{ github.ref_name }}  # 使用Git标签作为版本号
+            yydsxll/autojdck:latest          # 使用latest标签
+            yydsxll/autojdck:${{ github.ref_name }}  # 使用Git标签作为版本号
           labels: ${{ steps.meta.outputs.labels }}
 
           
