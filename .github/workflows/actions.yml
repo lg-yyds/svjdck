@@ -32,7 +32,7 @@ jobs:
           draft: false
           prerelease: false
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MYGITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
 
@@ -51,14 +51,14 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: 初始化docker仓库
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: dsmggm/autojdck
+          images: yydsxll/atjdck
 
       - name: 设置docker版本号
         id: get_version
@@ -74,6 +74,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
-            dsmggm/autojdck:latest
-            dsmggm/autojdck:${{ env.VERSION }}
+            yydsxll/atjdck:latest
+            yydsxll/atjdck:${{ env.VERSION }}
           labels: ${{ steps.meta.outputs.labels }}
